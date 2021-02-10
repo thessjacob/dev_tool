@@ -1,0 +1,15 @@
+---
+# Default Front-end variable
+httpd_volume: "httpd_vol"
+nginx_volume: "nginx_vol"
+jenkins_volume: "jenkins_home"
+
+# Default Database variables
+mariadb_volume: "mariadb_vol"
+mariadb_password: "password"
+
+mysql_volume: "mysql_vol"
+mysql_password: "password"
+
+postgresql_volume: "postgres_vol"
+postgresql_password: "password"

@@ -1,0 +1,9 @@
+    
+    ingress {
+        description = "mariadb from my ip/internally"
+        from_port   = 3306
+        to_port     = 3306
+        protocol    = "tcp"
+        cidr_blocks = [var.my_ip, var.vpc_cidr]
+    }
+    
