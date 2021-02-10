@@ -31,6 +31,7 @@ You should also add the ip to rollback/terraform.tfvars so that you don't have t
 The second variable is the "local_account" variable at roles/dev_tool/vars/main.yml. You should put your current terminal user at the variable.
 ```
 local_account: "<my_user>"
+```
 
 ### Using the script
 
