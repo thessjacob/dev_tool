@@ -12,6 +12,10 @@ if (( $aws == 0)); then
   exit 1
 fi
 
+if [ ! -d .ssh ]; then
+  mkdir .ssh
+fi
+
 if [ ! -f .ssh/id_rsa_dev_tool.pub ]; then
   ssh-keygen -q -t rsa -N '' -f .ssh/id_rsa_dev_tool <<<y 2>&1 >/dev/null
   key=$(cat .ssh/id_rsa_dev_tool.pub)
