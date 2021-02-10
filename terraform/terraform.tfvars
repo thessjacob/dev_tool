@@ -1,4 +1,4 @@
-my_ip = 
+my_ip = /32
 # my_user = 
 # environment =
 # image_id =
