@@ -8,7 +8,7 @@ To get started, you will need to make sure that Ansible 2.10 or later is install
 
 You will also need Terraform, however the script can install Terraform for you.
 
-This script was tested on RHEL/CentOS, but should theoretically work from any bash shell.
+This script was tested on RHEL/CentOS, but should theoretically work in any bash shell.
 
 
 ## Getting Started
@@ -46,7 +46,7 @@ If aws-cli and ansible are configured correctly, the script should do the follow
 
 ### Options
 
-Currently there are six containers to choose from. Note that creating two containers that use the same default port (such as httpd and nginx both) will not work. However, if you wish to deploy two containers that use the same default ports, you can change the port mapping by editing the role/dev_tool/vars/main.yml file.
+Currently there are six containers to choose from. Note that creating two containers that use the same default port (such as httpd and nginx both) will not work. However, if you alter the task files so that the created containers map to different ports, you can use them both.
 
 The current container tags and their default host ports are shown below:
 

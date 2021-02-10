@@ -15,7 +15,7 @@
     image: httpd
     state: started
     ports:
-      - "{{ httpd_port_map }}"
+      - 80:80
     volume: "{{ httpd_volume }}:/var/www/"
   tags:
     - httpd
@@ -39,7 +39,7 @@
     image: nginx
     state: started
     ports:
-      - "{{ nginx_port_map }}"
+      - 80:80
     volume: "{{ nginx_volume }}:/var/www/"
   tags:
     - nginx
@@ -63,8 +63,8 @@
     image: jenkins/jenkins:lts
     state: started      
     ports: 
-      - "{{ jenkins_port_map }}"
-      - "{{ jenkins_api_port_map }}"
+      - 8080
+      - 50000:50000
     volume: "{{ jenkins_volume}}:/var/jenkins_home"
   tags:
     - jenkins
