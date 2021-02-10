@@ -55,8 +55,8 @@ cp -f rollback/inventory inventory
 sed -i "/\[public\]/a $ip1" inventory
 sed -i "/\[private\]/a $ip2" inventory
 
-echo "Waiting 15 seconds to allow intances to come up before configuring"
-sleep 15
+echo "Waiting 30 seconds to allow intances to come up before configuring"
+sleep 30
 ansible-playbook playbook.yml -i inventory --tags "$1,$2,$3,$4,$5,$6"
 
 cd terraform 

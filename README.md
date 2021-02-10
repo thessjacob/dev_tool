@@ -18,7 +18,9 @@ Grab the repo using:
 git clone git@github.com:thessjacob/dev_tool.git
 ```
 
-Once it's downloaded, you'll need to make changes to one specific variable, which can be found in terraform/terraform.tfvars. The ip address you add should be your external address, as that is what will need to be accepted by the AWS security groups.
+Once it's downloaded, you'll need to make changes to two specific variables. 
+
+The first can be found in terraform/terraform.tfvars. The ip address you add should be your external address, as that is what will need to be accepted by the AWS security groups.
 ```
 vim terraform/terraform.tfvars
 
@@ -26,6 +28,9 @@ my_ip = "<your_ip>/32"
 ```
 You should also add the ip to rollback/terraform.tfvars so that you don't have to readd it later if you rollback your environment.
 
+The second variable is the "local_account" variable at roles/dev_tool/vars/main.yml. You should put your current terminal user at the variable.
+```
+local_account: "<my_user>"
 
 ### Using the script
 
