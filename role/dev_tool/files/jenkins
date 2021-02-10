@@ -1,0 +1,17 @@
+    
+    ingress {
+        description = "jenkins from my ip"
+        from_port   = 8080
+        to_port     = 8080
+        protocol    = "tcp"
+        cidr_blocks = [var.my_ip, var.vpc_cidr]
+    }
+
+        ingress {
+        description = "jenkins java api from my ip"
+        from_port   = 50000
+        to_port     = 50000
+        protocol    = "tcp"
+        cidr_blocks = [var.my_ip, var.vpc_cidr]
+    }
+    

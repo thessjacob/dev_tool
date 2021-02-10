@@ -1,0 +1,33 @@
+---
+- name: install container packages
+  become: yes
+  ansible.builtin.package:
+    name:
+      - skopeo
+      - buildah
+      - podman
+      - vim
+    state: present
+  tags:
+    - always
+
+- name: enable rootless containers
+  changed_when: false
+  become: yes
+  ansible.builtin.shell:
+    cmd: sh -c "echo 0 > /proc/sys/net/ipv4/ip_unprivileged_port_start"
+  tags:
+    - always
+
+- name: set-up front-end containers
+  include_tasks: front-end.yml
+  when: "'public' in group_names"
+  tags:
+    - always
+
+- name: set-up db containers
+  include_tasks: database.yml
+  when: "'private' in group_names"
+  tags:
+    - always
+

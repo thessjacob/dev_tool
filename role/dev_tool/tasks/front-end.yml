@@ -1,0 +1,73 @@
+---
+- name: create httpd volume
+  containers.podman.podman_volume:
+    name: "{{ httpd_volume }}"
+    state: present
+    label:
+      image: httpd
+      purpose: front-end
+  tags:
+    - httpd
+
+- name: run an httpd container
+  containers.podman.podman_container:
+    name: dev_httpd
+    image: httpd
+    state: started
+    ports:
+      - 80:80
+    volume: "{{ httpd_volume }}:/var/www/"
+  tags:
+    - httpd
+  register: httpd
+  notify:
+    - Open httpd ports
+
+- name: create nginx volume
+  containers.podman.podman_volume:
+    name: "{{ nginx_volume }}"
+    state: present
+    label:
+      image: nginx
+      purpose: front-end
+  tags:
+    - nginx
+
+- name: run an nginx container
+  containers.podman.podman_container:
+    name: dev_nginx
+    image: nginx
+    state: started
+    ports:
+      - 80:80
+    volume: "{{ nginx_volume }}:/var/www/"
+  tags:
+    - nginx
+  register: nginx
+  notify:
+    - Open nginx ports 
+
+- name: create jenkins volume
+  containers.podman.podman_volume:
+    name: "{{ jenkins_volume }}"
+    state: present
+    label:
+      image: jenkins
+      purpose: front-end
+  tags:
+    - jenkins
+
+- name: run a jenkins container
+  containers.podman.podman_container:
+    name: dev_jenkins
+    image: jenkins/jenkins:lts
+    state: started      
+    ports: 
+      - 8080
+      - 50000:50000
+    volume: "{{ jenkins_volume}}:/var/jenkins_home"
+  tags:
+    - jenkins
+  register: jenkins
+  notify:
+    - Open jenkins ports

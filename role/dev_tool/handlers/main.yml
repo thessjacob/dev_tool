@@ -1,0 +1,51 @@
+---
+# Front-end Port Openings
+- name: Open httpd ports
+  remote_user: "{{ local_account }}"
+  ansible.builtin.shell:
+    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/httpd_add.sh"
+    warn: false
+  delegate_to: 127.0.0.1
+  when: httpd.changed
+
+- name: Open nginx ports
+  remote_user: "{{ local_account }}"
+  ansible.builtin.shell:
+    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/nginx_add.sh"
+    warn: false
+  delegate_to: 127.0.0.1
+  when: nginx.changed
+
+- name: Open jenkins ports
+  remote_user: "{{ local_account }}"
+  ansible.builtin.shell:
+    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/jenkins_add.sh"
+    warn: false
+  delegate_to: 127.0.0.1
+  when: jenkins.changed
+
+
+# DB Port Openings
+- name: Open mariadb ports
+  remote_user: "{{ local_account }}"
+  ansible.builtin.shell:
+    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/mariadb_add.sh"
+    warn: false
+  delegate_to: 127.0.0.1
+  when: mariadb.changed
+
+- name: Open mysql ports
+  remote_user: "{{ local_account }}"
+  ansible.builtin.shell:
+    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/mysql_add.sh"
+    warn: false
+  delegate_to: 127.0.0.1
+  when: mysql.changed
+
+- name: Open postgresql ports
+  remote_user: "{{ local_account }}"
+  ansible.builtin.shell:
+    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/postgresql_add.sh"
+    warn: false
+  delegate_to: 127.0.0.1
+  when: postgresql.changed

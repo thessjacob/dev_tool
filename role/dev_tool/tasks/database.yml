@@ -1,0 +1,75 @@
+---
+- name: create mariadb volume
+  containers.podman.podman_volume:
+    name: "{{ mariadb_volume }}"
+    state: present
+    label:
+      image: mariadb
+      purpose: db
+  tags:
+    - mariadb
+
+- name: run a mariadb container
+  containers.podman.podman_container:
+    name: dev_mariadb
+    image: mariadb
+    state: started
+    ports: 3306:3306
+    volume: "{{ mariadb_volume }}:/var/lib/mysql"
+    env:
+      MYSQL_ROOT_PASSWORD: "{{ mariadb_password }}"
+  tags:
+    - mariadb
+  register: mariadb
+  notify:
+    - Open mariadb ports
+
+- name: create mysql volume
+  containers.podman.podman_volume:
+    name: "{{ mysql_volume }}"
+    state: present
+    label:
+      image: mysql
+      purpose: db
+  tags:
+    - mysql
+
+- name: run a mysql container
+  containers.podman.podman_container:
+    name: dev_mysql
+    image: mysql
+    state: started
+    ports: 3306:3306
+    volume: "{{ mysql_volume }}:/var/lib/mysql"
+    env:
+      MYSQL_ROOT_PASSWORD: "{{ mysql_password }}"
+  tags:
+    - mysql
+  register: mysql
+  notify:
+    - Open mysql ports
+
+- name: create postgresql volume
+  containers.podman.podman_volume:
+    name: "{{ postgresql_volume }}"
+    state: present
+    label:
+      image: postgresql
+      purpose: db
+  tags:
+    - postgresql
+
+- name: run a postgresql container
+  containers.podman.podman_container:
+    name: dev_postgresql
+    image: postgres
+    state: started
+    ports: 5432:5432
+    volume: "{{ postgresql_volume }}:/var/lib/postgresql"
+    env:
+      POSTGRES_PASSWORD: "{{ postgresql_password }}"
+  tags:
+    - postgresql
+  register: postgresql
+  notify:
+    - Open postgresql ports

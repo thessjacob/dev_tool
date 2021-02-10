@@ -1,0 +1,16 @@
+---
+local_account: jss
+# Custom Front-end variable
+#httpd_volume:
+#nginx_volume:
+#jenkins_volume:
+
+# Custom Database variables
+#mariadb_volume:
+#mariadb_password:
+
+#mysql_volume:
+#mysql_password:
+
+#postgresql_volume:
+#postgres_password:

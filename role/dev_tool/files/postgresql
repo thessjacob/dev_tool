@@ -1,0 +1,9 @@
+    
+    ingress {
+        description = "postgresql from my ip/internally"
+        from_port   = 5432
+        to_port     = 5432
+        protocol    = "tcp"
+        cidr_blocks = [var.my_ip, var.vpc_cidr]
+    }
+    

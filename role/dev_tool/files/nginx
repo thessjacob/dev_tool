@@ -1,0 +1,9 @@
+    
+    ingress {
+        description = "nginx from my ip"
+        from_port   = 80
+        to_port     = 80
+        protocol    = "tcp"
+        cidr_blocks = [var.my_ip, var.vpc_cidr]
+    }
+    
