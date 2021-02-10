@@ -1,51 +1,171 @@
 ---
 # Front-end Port Openings
+- name: Reflect changed httpd from_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/httpd"
+    state: present
+    regexp: ".*from_port.*"
+    line: "        from_port   = {{ httpd_host_port }}"
+  delegate_to: 127.0.0.1
+  when: httpd.changed
+
+- name: Reflect changed httpd to_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/httpd"
+    state: present
+    regexp: ".*to_port.*"
+    line: "        to_port   = {{ httpd_host_port }}"
+  delegate_to: 127.0.0.1
+  when: httpd.changed
+
 - name: Open httpd ports
   remote_user: "{{ local_account }}"
   ansible.builtin.shell:
-    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/httpd_add.sh"
+    cmd: "bash {{ playbook_dir }}/role/dev_tool/files/httpd_add.sh"
     warn: false
   delegate_to: 127.0.0.1
   when: httpd.changed
 
+- name: Reflect changed nginx from_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/nginx"
+    state: present
+    regexp: ".*from_port.*"
+    line: "        from_port   = {{ nginx_host_port }}"
+  delegate_to: 127.0.0.1
+  when: nginx.changed
+
+- name: Reflect changed nginx to_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/nginx"
+    state: present
+    regexp: ".*to_port.*"
+    line: "        to_port   = {{ nginx_host_port }}"
+  delegate_to: 127.0.0.1
+  when: nginx.changed
+
 - name: Open nginx ports
   remote_user: "{{ local_account }}"
   ansible.builtin.shell:
-    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/nginx_add.sh"
+    cmd: "bash {{ playbook_dir }}/role/dev_tool/files/nginx_add.sh"
     warn: false
   delegate_to: 127.0.0.1
   when: nginx.changed
 
+- name: Reflect changed jenkins from_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/jenkins"
+    state: present
+    regexp: ".*from_port.*"
+    line: "        from_port   = {{ jenkins_host_port }}"
+  delegate_to: 127.0.0.1
+  when: jenkins.changed
+
+- name: Reflect changed jenkins to_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/jenkins"
+    state: present
+    regexp: ".*to_port.*"
+    line: "        to_port   = {{ jenkins_host_port }}"
+  delegate_to: 127.0.0.1
+  when: jenkins.changed
+
 - name: Open jenkins ports
   remote_user: "{{ local_account }}"
   ansible.builtin.shell:
-    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/jenkins_add.sh"
+    cmd: "bash {{ playbook_dir }}/role/dev_tool/files/jenkins_add.sh"
     warn: false
   delegate_to: 127.0.0.1
   when: jenkins.changed
 
 
 # DB Port Openings
+- name: Reflect changed mariadb from_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/mariadb"
+    state: present
+    regexp: ".*from_port.*"
+    line: "        from_port   = {{ mariadb_host_port }}"
+  delegate_to: 127.0.0.1
+  when: mariadb.changed
+
+- name: Reflect changed mariadb to_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/mariadb"
+    state: present
+    regexp: ".*to_port.*"
+    line: "        to_port   = {{ mariadb_host_port }}"
+  delegate_to: 127.0.0.1
+  when: mariadb.changed
+
 - name: Open mariadb ports
   remote_user: "{{ local_account }}"
   ansible.builtin.shell:
-    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/mariadb_add.sh"
+    cmd: "bash {{ playbook_dir }}/role/dev_tool/files/mariadb_add.sh"
     warn: false
   delegate_to: 127.0.0.1
   when: mariadb.changed
 
+- name: Reflect changed mysql from_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/mysql"
+    state: present
+    regexp: ".*from_port.*"
+    line: "        from_port   = {{ mysql_host_port }}"
+  delegate_to: 127.0.0.1
+  when: mysql.changed
+
+- name: Reflect changed mysql to_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/mysql"
+    state: present
+    regexp: ".*to_port.*"
+    line: "        to_port   = {{ mysql_host_port }}"
+  delegate_to: 127.0.0.1
+  when: mysql.changed
+
 - name: Open mysql ports
   remote_user: "{{ local_account }}"
   ansible.builtin.shell:
-    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/mysql_add.sh"
+    cmd: "bash {{ playbook_dir }}/role/dev_tool/files/mysql_add.sh"
     warn: false
   delegate_to: 127.0.0.1
   when: mysql.changed
 
+- name: Reflect changed postgresql from_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/mariadb"
+    state: present
+    regexp: ".*from_port.*"
+    line: "        from_port   = {{ postgresql_host_port }}"
+  delegate_to: 127.0.0.1
+  when: postgresql.changed
+
+- name: Reflect changed postgresql to_port number
+  remote_user: "{{ local_account }}"
+  ansible.builtin.lineinfile:
+    path: "{{ playbook_dir }}/role/dev_tool/files/mariadb"
+    state: present
+    regexp: ".*to_port.*"
+    line: "        to_port   = {{ postgresql_host_port }}"
+  delegate_to: 127.0.0.1
+  when: postgresql.changed
+
 - name: Open postgresql ports
   remote_user: "{{ local_account }}"
   ansible.builtin.shell:
-    cmd: "bash {{ playbook_dir}}/role/dev_tool/files/postgresql_add.sh"
+    cmd: "bash {{ playbook_dir }}/role/dev_tool/files/postgresql_add.sh"
     warn: false
   delegate_to: 127.0.0.1
   when: postgresql.changed

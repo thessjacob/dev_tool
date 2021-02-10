@@ -1,16 +1,26 @@
 ---
-local_account: ""
+local_account:
+
 # Custom Front-end variable
 #httpd_volume:
+#httpd_host_port:
+
 #nginx_volume:
+#nginx_host_port:
+
 #jenkins_volume:
+#jenkins_host_port:
+#jenkins_api_host_port:
 
 # Custom Database variables
 #mariadb_volume:
 #mariadb_password:
+#mariadb_host_port:
 
 #mysql_volume:
 #mysql_password:
+#mysql_host_port:
 
 #postgresql_volume:
 #postgres_password:
+#postgresql_host_port:

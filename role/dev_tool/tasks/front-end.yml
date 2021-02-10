@@ -15,12 +15,14 @@
     image: httpd
     state: started
     ports:
-      - 80:80
+      - "{{ httpd_host_port }}:80"
     volume: "{{ httpd_volume }}:/var/www/"
   tags:
     - httpd
   register: httpd
   notify:
+    - Reflect changed httpd from_port number
+    - Reflect changed httpd to_port number
     - Open httpd ports
 
 - name: create nginx volume
@@ -39,12 +41,14 @@
     image: nginx
     state: started
     ports:
-      - 80:80
+      - "{{ nginx_host_port }}:80"
     volume: "{{ nginx_volume }}:/var/www/"
   tags:
     - nginx
   register: nginx
   notify:
+    - Reflect changed nginx from_port number
+    - Reflect changed nginx to_port number
     - Open nginx ports 
 
 - name: create jenkins volume
@@ -63,11 +67,13 @@
     image: jenkins/jenkins:lts
     state: started      
     ports: 
-      - 8080
-      - 50000:50000
+      - "{{ jenkins_host_port }}:8080"
+#      - "{{ jenkins_api_host_port }}:50000"
     volume: "{{ jenkins_volume}}:/var/jenkins_home"
   tags:
     - jenkins
   register: jenkins
   notify:
+    - Reflect changed jenkins from_port number
+    - Reflect changed jenkins to_port number
     - Open jenkins ports

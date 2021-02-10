@@ -11,5 +11,5 @@ if [[ "$decision" == "yes" ]]; then
   rm terraform.tfstate.backup
   cd ..
   cp rollback/* terraform/
-  rm terraform/inventory
+  mv terraform/inventory ..
 fi

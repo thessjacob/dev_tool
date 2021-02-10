@@ -14,7 +14,7 @@
     name: dev_mariadb
     image: mariadb
     state: started
-    ports: 3306:3306
+    ports: "{{ mariadb_host_port }}:3306"
     volume: "{{ mariadb_volume }}:/var/lib/mysql"
     env:
       MYSQL_ROOT_PASSWORD: "{{ mariadb_password }}"
@@ -22,6 +22,8 @@
     - mariadb
   register: mariadb
   notify:
+    - Reflect changed mariadb from_port number
+    - Reflect changed mariadb to_port number
     - Open mariadb ports
 
 - name: create mysql volume
@@ -39,7 +41,7 @@
     name: dev_mysql
     image: mysql
     state: started
-    ports: 3306:3306
+    ports: "{{ mysql_host_port }}:3306"
     volume: "{{ mysql_volume }}:/var/lib/mysql"
     env:
       MYSQL_ROOT_PASSWORD: "{{ mysql_password }}"
@@ -47,6 +49,8 @@
     - mysql
   register: mysql
   notify:
+    - Reflect changed mysql from_port number
+    - Reflect changed mysql to_port number
     - Open mysql ports
 
 - name: create postgresql volume
@@ -64,7 +68,7 @@
     name: dev_postgresql
     image: postgres
     state: started
-    ports: 5432:5432
+    ports: "{{ postgresql_host_port }}:5432"
     volume: "{{ postgresql_volume }}:/var/lib/postgresql"
     env:
       POSTGRES_PASSWORD: "{{ postgresql_password }}"
@@ -72,4 +76,6 @@
     - postgresql
   register: postgresql
   notify:
+    - Reflect changed postgresql from_port number
+    - Reflect changed postgresql to_port number
     - Open postgresql ports

@@ -28,9 +28,10 @@ my_ip = "<your_ip>/32"
 ```
 You should also add the ip to rollback/terraform.tfvars so that you don't have to readd it later if you rollback your environment.
 
-The second variable is the "local_account" variable at roles/dev_tool/vars/main.yml. You should put your current terminal user at the variable.
+The second variable you need to change is in role/dev_tool/vars/main.yml. You should add your current terminal user to the "local_account:" variable.
 ```
-local_account: "<my_user>"
+local_account: "<your_user>"
+```
 
 ### Using the script
 
