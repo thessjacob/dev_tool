@@ -52,7 +52,7 @@ If aws-cli and ansible are configured correctly, the script should do the follow
 
 ### Options
 
-Currently there are six containers to choose from. Note that creating two containers that use the same default port (such as httpd and nginx both) will not work. However, if you alter the task files so that the created containers map to different ports, you can use them both.
+Currently there are six containers to choose from. Note that creating two containers that use the same default port (such as httpd and nginx both) will not work. However, you can add a custom host port by placing the desired host port number in role/dev_tool/vars/main.yml. Simply uncomment the desired variable and add the port number you want. When run, the role will dynamically add the custom port to the aws vpc security group.
 
 The current container tags and their default host ports are shown below:
 
