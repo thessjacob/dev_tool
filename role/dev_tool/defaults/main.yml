@@ -1,15 +1,24 @@
 ---
 # Default Front-end variable
 httpd_volume: "httpd_vol"
+httpd_port_map: "80:80"
+
 nginx_volume: "nginx_vol"
+nginx_port_map: "80:80"
+
 jenkins_volume: "jenkins_home"
+jenkins_port_map: "8080:8080"
+jenkins_api_port_map: "50000:50000"
 
 # Default Database variables
 mariadb_volume: "mariadb_vol"
 mariadb_password: "password"
+mariadb_port_map: "3306:3306"
 
 mysql_volume: "mysql_vol"
 mysql_password: "password"
+mysql_port_map: "3306:3306"
 
 postgresql_volume: "postgres_vol"
 postgresql_password: "password"
+postgresql_port_map: "5432:5432"

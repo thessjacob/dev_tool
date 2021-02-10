@@ -2,15 +2,24 @@
 local_account: jss
 # Custom Front-end variable
 #httpd_volume:
+#httpd_port_map:
+
 #nginx_volume:
+#nginx_port_map:
+
 #jenkins_volume:
+#jenkins_port_map:
+#jenkins_api_port_map:
 
 # Custom Database variables
 #mariadb_volume:
 #mariadb_password:
+#mariadb_port_map:
 
 #mysql_volume:
 #mysql_password:
+#mysql_port_map:
 
 #postgresql_volume:
 #postgres_password:
+#postgresql_port_map:

@@ -14,7 +14,7 @@
     name: dev_mariadb
     image: mariadb
     state: started
-    ports: 3306:3306
+    ports: "{{ mariadb_port_map }}"
     volume: "{{ mariadb_volume }}:/var/lib/mysql"
     env:
       MYSQL_ROOT_PASSWORD: "{{ mariadb_password }}"
@@ -39,7 +39,7 @@
     name: dev_mysql
     image: mysql
     state: started
-    ports: 3306:3306
+    ports: "{{ mysql_port_map }}"
     volume: "{{ mysql_volume }}:/var/lib/mysql"
     env:
       MYSQL_ROOT_PASSWORD: "{{ mysql_password }}"
@@ -64,7 +64,7 @@
     name: dev_postgresql
     image: postgres
     state: started
-    ports: 5432:5432
+    ports: "{{ postgresql_port_map }}"
     volume: "{{ postgresql_volume }}:/var/lib/postgresql"
     env:
       POSTGRES_PASSWORD: "{{ postgresql_password }}"
