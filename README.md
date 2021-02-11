@@ -4,7 +4,10 @@ This tool provisions a small group of AWS resources to test and configure contai
 
 
 ## Prerequisites
-To get started, you will need to make sure that Ansible 2.10 or later is installed and that you have the aws-cli configured in your terminal environment. You will need to have IAM permissions that allow you to create, modify, and destroy VPC and EC2 resources.
+To get started, you will need to make sure that Ansible 2.10 or later is installed and that you have the aws-cli configured (including a credentials file, usually found in ~/.aws/credentials) in your terminal environment. You will need to have IAM permissions that allow you to create, modify, and destroy VPC and EC2 resources.
+
+- instructions to install ansible (I suggest installing with pip, but use the method that's right for you): https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip
+- instructions to install aws-cli: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 
 You will also need Terraform, however the script can install Terraform for you.
 
