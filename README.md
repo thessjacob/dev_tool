@@ -110,7 +110,7 @@ The first way to easily customize your environment is to use the terraform/terra
 
 You can also edit ansible variables by editing the role vars file at role/dev_tool/vars/main.yml
 
-Everything is made to be as modular as possible, so it should be relatively easy to add tasks to the ansible role to create new containers not currently configured or to edit the terraform config to alter what's provisioned in AWS
+Everything is made to be as modular as possible, so it should be relatively easy to add tasks to the ansible role to create new containers not currently configured or to edit the terraform config to alter what's provisioned in AWS.
 
 I recommend looking specifically at the role/dev_tool/files/ directory to see how a short sed script can be used to automatically edit the terraform resource files to open new ports in the VPC security groups.
 
