@@ -35,7 +35,6 @@ fi
 # Install terraform if necessary
 state=$(terraform --version | grep "Terraform")
 if [[ -z $state ]]; then
-
   sudo yum install yum-utils -y
   sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
   sudo yum install terraform -y
