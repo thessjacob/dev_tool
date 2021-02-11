@@ -14,14 +14,14 @@ This script was tested on RHEL/CentOS, but should theoretically work in any bash
 ## Getting Started
 
 Grab the repo using:
-``` sh
+```
 git clone git@github.com:thessjacob/dev_tool.git
 ```
 
 Once it's downloaded, you'll need to make changes to two specific variables. 
 
 The first can be found in terraform/terraform.tfvars. The ip address you add should be your external address, as that is what will need to be accepted by the AWS security groups.
-``` sh
+```
 vim terraform/terraform.tfvars
 
 my_ip = "<your_ip>/32"
@@ -82,7 +82,7 @@ You can easily have the script create as many of the containers as you would lik
 ```
 
 If you'd prefer not to use the script and wish to run the ansible role manually, you can do so using:
-``` sh
+```
 ansible-playbook playbook.yml -i inventory --tags "<tag1>,<tag2>,<tag3>"
 ```
 Remember though: if you make changes by running an ansible-playbook manually, you will need to run terraform apply to ensure that the correct security group changes are made.
@@ -90,12 +90,12 @@ Remember though: if you make changes by running an ansible-playbook manually, yo
 
 ## Accessing your instances
 Use the ips that terraform outputs to ssh to your instances
-``` sh
+```
 ssh -i .ssh/id_rsa_dev_tool.pub ec2-user@<ip-1>
 ssh -i .ssh/id_rsa_dev_tool.pub ec2-user@<ip-2>
 ```
 If you need to find these two ips, use the following method:
-``` sh
+```
 cd terraform
 terraform output
 ```
