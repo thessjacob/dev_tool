@@ -1,6 +1,6 @@
 # Dev_Tool -- Easy Cloud Container Environment
 
-This tool provisions a small group of AWS resources to test and configure containers in a native cloud environment. It is designed to make creating and testing consistent but also highly configurable. Provisioned instances come with skopeo, buildah, and podman installed for manipulating oci compatible containers.
+This tool provisions a small group of AWS resources to test and configure containers in a cloud native environment. It is designed to make creating and testing consistent but also highly configurable. Provisioned instances come with skopeo, buildah, and podman installed for manipulating oci compatible containers.
 
 
 ## Prerequisites
