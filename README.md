@@ -14,14 +14,14 @@ This script was tested on RHEL/CentOS, but should theoretically work in any bash
 ## Getting Started
 
 Grab the repo using:
-```
+``` sh
 git clone git@github.com:thessjacob/dev_tool.git
 ```
 
 Once it's downloaded, you'll need to make changes to two specific variables. 
 
 The first can be found in terraform/terraform.tfvars. The ip address you add should be your external address, as that is what will need to be accepted by the AWS security groups.
-```
+``` sh
 vim terraform/terraform.tfvars
 
 my_ip = "<your_ip>/32"
@@ -54,6 +54,16 @@ If aws-cli and ansible are configured correctly, the script should do the follow
 
 Currently there are six containers to choose from. Note that creating two containers that use the same default port (such as httpd and nginx both) will not work. However, you can add a custom host port by placing the desired host port number in role/dev_tool/vars/main.yml. Simply uncomment the desired variable and add the port number you want. When run, the role will dynamically add the custom port to the aws vpc security group.
 
+This example leaves the default nginx host port as 80 but changes httpd to 81:
+``` sh
+# Example role/dev_tool/vars/main.yml
+
+#httpd_volume:
+httpd_host_port: 81
+
+#nginx_volume:
+#nginx_host_port:
+```
 The current container tags and their default host ports are shown below:
 
 #### "Front-end"
@@ -67,12 +77,12 @@ The current container tags and their default host ports are shown below:
 - postgresql (5432)
 
 You can easily have the script create as many of the containers as you would like as follows:
-```
+``` sh
 ./my_terraform.sh httpd mysql postgresql
 ```
 
 If you'd prefer not to use the script and wish to run the ansible role manually, you can do so using:
-```
+``` sh
 ansible-playbook playbook.yml -i inventory --tags "<tag1>,<tag2>,<tag3>"
 ```
 Remember though: if you make changes by running an ansible-playbook manually, you will need to run terraform apply to ensure that the correct security group changes are made.
@@ -80,12 +90,12 @@ Remember though: if you make changes by running an ansible-playbook manually, yo
 
 ## Accessing your instances
 Use the ips that terraform outputs to ssh to your instances
-```
+``` sh
 ssh -i .ssh/id_rsa_dev_tool.pub ec2-user@<ip-1>
 ssh -i .ssh/id_rsa_dev_tool.pub ec2-user@<ip-2>
 ```
 If you need to find these two ips, use the following method:
-```
+``` sh
 cd terraform
 terraform output
 ```
@@ -108,7 +118,7 @@ I recommend looking specifically at the role/dev_tool/files/ directory to see ho
 ## Undoing your changes
 
 The files in the rollback/ directory should not be changed other than to add your external ip to rollback/terraform.tfvars. The files can be copied to terraform/ to overwrite any changes you've made, or you can use
-```
+``` sh
 ./rollback.sh
 ```
 to completely destroy and reset your terraform environment found in terraform/.
