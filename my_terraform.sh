@@ -60,7 +60,7 @@ sed -i "/\[public\]/a $ip1" inventory
 sed -i "/\[private\]/a $ip2" inventory
 
 # Pause before running ansible config to avoid "can't connect" error
-echo "Waiting 30 seconds to allow intances to come up before configuring"
+echo "Waiting 30 seconds to allow instances to come up before configuring"
 sleep 30
 
 # Run ansible playbook to install container tools and set-up desired containers
