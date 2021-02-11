@@ -1,5 +1,12 @@
 #!/bin/bash
 
+tag1=$1
+tag2=$2
+tag3=$3
+tag4=$4
+tag5=$5
+tag6=$6
+
 # Error checking
 ansible=$(ansible --version 2>/dev/null| wc -l)
 if (( $ansible == 0 )); then
@@ -24,13 +31,6 @@ if [ ! -f .ssh/id_rsa_dev_tool.pub ]; then
   echo "my_key_value = \"$key\"" >> terraform/terraform.tfvars
   cp terraform/terraform.tfvars rollback/
 fi
-
-tag1=$1
-tag2=$2
-tag3=$3
-tag4=$4
-tag5=$5
-tag6=$6
 
 # Install terraform if necessary
 state=$(terraform --version | grep "Terraform")
