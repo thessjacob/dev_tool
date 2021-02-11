@@ -1,5 +1,5 @@
 ---
-local_account:
+local_account: ""
 
 # Custom Front-end variable
 #httpd_volume:

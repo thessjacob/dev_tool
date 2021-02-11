@@ -1,10 +1,13 @@
 # Dev_Tool -- Easy Cloud Container Environment
 
-This tool provisions a small group of AWS resources to test and configure containers in a native cloud environment. It is designed to make creating and testing consistent but also highly configurable. Provisioned instances come with skopeo, buildah, and podman installed for manipulating oci compatible containers.
+This tool provisions a small group of AWS resources to test and configure containers in a cloud native environment. It is designed to make creating and testing consistent but also highly configurable. Provisioned instances come with skopeo, buildah, and podman installed for manipulating oci compatible containers.
 
 
 ## Prerequisites
-To get started, you will need to make sure that Ansible 2.10 or later is installed and that you have the aws-cli configured in your terminal environment. You will need to have IAM permissions that allow you to create, modify, and destroy VPC and EC2 resources.
+To get started, you will need to make sure that Ansible 2.10 or later is installed and that you have the aws-cli configured (including a credentials file, usually found in ~/.aws/credentials) in your terminal environment. You will need to have IAM permissions that allow you to create, modify, and destroy VPC and EC2 resources.
+
+- instructions to install ansible (I suggest installing with pip, but use the method that's right for you): https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip
+- instructions to install aws-cli (make sure to run aws configure after installing): https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 
 You will also need Terraform, however the script can install Terraform for you.
 
@@ -35,7 +38,7 @@ local_account: "<your_user>"
 
 ### Using the script
 
-Once you have added your ip address to the appropriate files, you can then run the script using:
+Once you have added your ip address and local_account user to the appropriate files, you can then run the script using:
 
 ```
 ./my_terraform.sh
@@ -47,7 +50,7 @@ If aws-cli and ansible are configured correctly, the script should do the follow
 - create two AWS instances (one in each subnet) that will, by default, be of size t2.mico and distro RHEL
 - generate an ssh key to be used only for accessing those two instances. It will live in a .ssh directory in the root directory of the repo
 - run an ansible playbook that will install container tools (buildah, skopeo, podman)
-- if used with appropriate tags, the script will run a playbook that will create a volume and rootless container matching any specified tag, as well as tell Terraform to open necessary ports in the VPC security groups
+- if used with appropriate tags, the script will run a playbook that will create a named volume and rootless container matching any specified tag, as well as tell Terraform to open necessary ports in the VPC security groups
 
 
 ### Options
@@ -110,7 +113,7 @@ The first way to easily customize your environment is to use the terraform/terra
 
 You can also edit ansible variables by editing the role vars file at role/dev_tool/vars/main.yml
 
-Everything is made to be as modular as possible, so it should be relatively easy to add tasks to the ansible role to create new containers not currently configured or to edit the terraform config to alter what's provisioned in AWS
+Everything is made to be as modular as possible, so it should be relatively easy to add tasks to the ansible role to create new containers not currently configured or to edit the terraform config to alter what's provisioned in AWS.
 
 I recommend looking specifically at the role/dev_tool/files/ directory to see how a short sed script can be used to automatically edit the terraform resource files to open new ports in the VPC security groups.
 
