@@ -33,6 +33,8 @@ You should also add the ip to rollback/terraform.tfvars so that you don't have t
 
 The second variable you need to change is in role/dev_tool/vars/main.yml. You should add your current terminal user to the "local_account:" variable.
 ```
+vim role/dev_tool/vars/main.yml
+
 local_account: "<your_user>"
 ```
 
