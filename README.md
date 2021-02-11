@@ -35,7 +35,7 @@ local_account: "<your_user>"
 
 ### Using the script
 
-Once you have added your ip address to the appropriate files, you can then run the script using:
+Once you have added your ip address and local_account user to the appropriate files, you can then run the script using:
 
 ```
 ./my_terraform.sh
@@ -47,7 +47,7 @@ If aws-cli and ansible are configured correctly, the script should do the follow
 - create two AWS instances (one in each subnet) that will, by default, be of size t2.mico and distro RHEL
 - generate an ssh key to be used only for accessing those two instances. It will live in a .ssh directory in the root directory of the repo
 - run an ansible playbook that will install container tools (buildah, skopeo, podman)
-- if used with appropriate tags, the script will run a playbook that will create a volume and rootless container matching any specified tag, as well as tell Terraform to open necessary ports in the VPC security groups
+- if used with appropriate tags, the script will run a playbook that will create a named volume and rootless container matching any specified tag, as well as tell Terraform to open necessary ports in the VPC security groups
 
 
 ### Options
