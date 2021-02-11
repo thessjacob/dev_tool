@@ -16,7 +16,7 @@
     path: "{{ playbook_dir }}/role/dev_tool/files/httpd"
     state: present
     regexp: ".*to_port.*"
-    line: "        to_port   = {{ httpd_host_port }}"
+    line: "        to_port     = {{ httpd_host_port }}"
   delegate_to: 127.0.0.1
   when: httpd.changed
 
@@ -44,7 +44,7 @@
     path: "{{ playbook_dir }}/role/dev_tool/files/nginx"
     state: present
     regexp: ".*to_port.*"
-    line: "        to_port   = {{ nginx_host_port }}"
+    line: "        to_port     = {{ nginx_host_port }}"
   delegate_to: 127.0.0.1
   when: nginx.changed
 
@@ -72,7 +72,7 @@
     path: "{{ playbook_dir }}/role/dev_tool/files/jenkins"
     state: present
     regexp: ".*to_port.*"
-    line: "        to_port   = {{ jenkins_host_port }}"
+    line: "        to_port     = {{ jenkins_host_port }}"
   delegate_to: 127.0.0.1
   when: jenkins.changed
 
@@ -102,7 +102,7 @@
     path: "{{ playbook_dir }}/role/dev_tool/files/mariadb"
     state: present
     regexp: ".*to_port.*"
-    line: "        to_port   = {{ mariadb_host_port }}"
+    line: "        to_port     = {{ mariadb_host_port }}"
   delegate_to: 127.0.0.1
   when: mariadb.changed
 
@@ -130,7 +130,7 @@
     path: "{{ playbook_dir }}/role/dev_tool/files/mysql"
     state: present
     regexp: ".*to_port.*"
-    line: "        to_port   = {{ mysql_host_port }}"
+    line: "        to_port     = {{ mysql_host_port }}"
   delegate_to: 127.0.0.1
   when: mysql.changed
 
@@ -158,7 +158,7 @@
     path: "{{ playbook_dir }}/role/dev_tool/files/mariadb"
     state: present
     regexp: ".*to_port.*"
-    line: "        to_port   = {{ postgresql_host_port }}"
+    line: "        to_port     = {{ postgresql_host_port }}"
   delegate_to: 127.0.0.1
   when: postgresql.changed
 
