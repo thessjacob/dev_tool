@@ -9,7 +9,7 @@ To get started, you will need to make sure that Ansible 2.10 or later is install
 - instructions to install ansible (I suggest installing with pip, but use the method that's right for you): https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip
 - instructions to install aws-cli (make sure to run aws configure after installing): https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 
-You will also need Terraform; however the script can install Terraform for you.
+You will also need Terraform; however, the script can install Terraform for you.
 
 This script was tested on RHEL/CentOS, but should theoretically work in any bash shell. You may need to comment out the short block that installs Terraform in my_terraform.sh if not using an enterprise linux with yum/dnf.
 
