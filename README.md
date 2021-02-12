@@ -11,7 +11,7 @@ To get started, you will need to make sure that Ansible 2.10 or later is install
 
 You will also need Terraform, however the script can install Terraform for you.
 
-This script was tested on RHEL/CentOS, but should theoretically work in any bash shell.
+This script was tested on RHEL/CentOS, but should theoretically work in any bash shell. You may need to comment out the short block that installs Terraform in my_terraform.sh if not using an enterprise linux with yum/dnf.
 
 
 ## Getting Started
@@ -96,8 +96,8 @@ Remember though: if you make changes by running an ansible-playbook manually, yo
 ## Accessing your instances
 Use the ips that terraform outputs to ssh to your instances
 ```
-ssh -i .ssh/id_rsa_dev_tool.pub ec2-user@<ip-1>
-ssh -i .ssh/id_rsa_dev_tool.pub ec2-user@<ip-2>
+ssh -i .ssh/id_rsa_dev_tool ec2-user@<ip-1>
+ssh -i .ssh/id_rsa_dev_tool ec2-user@<ip-2>
 ```
 If you need to find these two ips, use the following method:
 ```
