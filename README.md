@@ -9,7 +9,7 @@ To get started, you will need to make sure that Ansible 2.10 or later is install
 - instructions to install ansible (I suggest installing with pip, but use the method that's right for you): https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip
 - instructions to install aws-cli (make sure to run aws configure after installing): https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 
-You will also need Terraform, however the script can install Terraform for you.
+You will also need Terraform; however the script can install Terraform for you.
 
 This script was tested on RHEL/CentOS, but should theoretically work in any bash shell. You may need to comment out the short block that installs Terraform in my_terraform.sh if not using an enterprise linux with yum/dnf.
 
@@ -49,7 +49,7 @@ Once you have added your ip address and local_account user to the appropriate fi
 If aws-cli and ansible are configured correctly, the script should do the following:
 - init the terraform directory
 - apply the default configuation, which creates a VPC with one private subnet and one public subnet that are only accessible to each other and to your external ip.
-- create two AWS instances (one in each subnet) that will, by default, be of size t2.mico and distro RHEL
+- create two AWS instances (one in each subnet) that will, by default, be of size t2.micro and distro RHEL
 - generate an ssh key to be used only for accessing those two instances. It will live in a .ssh directory in the root directory of the repo
 - run an ansible playbook that will install container tools (buildah, skopeo, podman)
 - if used with appropriate tags, the script will run a playbook that will create a named volume and rootless container matching any specified tag, as well as tell Terraform to open necessary ports in the VPC security groups
